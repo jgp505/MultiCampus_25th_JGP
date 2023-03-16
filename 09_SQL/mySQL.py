@@ -80,7 +80,7 @@ if __name__ == '__main__' :
     
     # 테이블에 데이터 넣기
     '''
-    load_sql = PythonSQL(password='sora95sema*',dbname='test',tablename='userTable')
+    load_sql = PythonSQL(password='0000',dbname='test',tablename='userTable')
     while True :
         #datas = ('1','이병헌','Lee@naver.com','1996')
         datas = load_sql.inputData()
