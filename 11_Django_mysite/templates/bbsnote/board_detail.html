@@ -1,0 +1,44 @@
+<style>
+    h1 {
+        color:red;
+        font-size:52;
+    }
+    h5 {
+        color:black;
+        font-size:32;
+    }
+    li{
+        list-style:none;
+        padding: 5px 0px 5px 5px;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #efefef;
+        font-size: 18px;
+    }
+    textarea{
+        width:50%;
+        height:6.25em;
+        resize:horizontal;
+        border: 2px solid rgb(213, 194, 194);
+        outline-color: #FE6B8B;
+        border-radius:1.5%;
+    }
+</style>
+
+<h1>{{board.subject}}</h1>
+<div>
+    {{board.content}}
+</div>
+
+<h5>{{board.comment_set.count}}개의 댓글이 있습니다.</h5>
+<div>
+    <ul>
+        {% for comment in board.comment_set.all %}
+        <li>{{comment.content}}<li>
+        {% endfor %}
+     </ul>
+</div>
+<form id='comment_form' action="{% url 'bbsnote:comment_create' board.id %}" method="POST">
+    {% csrf_token %}
+    <textarea name="content" id="content" rows="15",placeholder='내용을 입력해 주세요.'></textarea>
+    <input type="submit" value="댓글달기">
+</form>
