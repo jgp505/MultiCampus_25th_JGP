@@ -16,18 +16,18 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-text">{{ board.content }}</div>
-            <div class="d-flex justify-content-end">
-                {% if board.update_date %}
-                <div class="badge badge-light p-2 text-left mx-3">
-                    <div class="mb-2">수정날짜</div>
-                    <div>{{ board.update_date|date:"Y-m-d A h:i" }}</div>
+                <div class="d-flex justify-content-end">
+                    {% if board.update_date %}
+                    <div class="badge badge-light p-2 text-left mx-3">
+                        <div class="mb-2">수정날짜</div>
+                        <div>{{ board.update_date|date:"Y-m-d A h:i" }}</div>
+                    </div>
+                    {% endif %}
+                    <div class="badge badge-light p-2 text-left">
+                        <div class="mb-2">{{ board.author.username }}</div>
+                        <div>{{ board.create_date |date:"Y-m-d A h:i" }}</div> 
+                    </div>
                 </div>
-                {% endif %}
-                <div class="badge badge-light p-2 text-left">
-                    <div class="mb-2">{{ board.author.username }}</div>
-                    <div>{{ board.create_date |date:"Y-m-d A h:i" }}</div> 
-                </div>
-            </div>
                 {% if request.user == board.author %}
                 <div class="my-3">
                     <a href="{% url 'bbsnote:board_modify' board.id  %}" class="btn btn-sm btn-outline-secondary">수정</a>
